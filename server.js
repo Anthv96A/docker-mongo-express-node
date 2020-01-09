@@ -1,20 +1,20 @@
-var express = require('express');
-var exphbs = require('express-handlebars');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express = require('express');
+const exphbs = require('express-handlebars');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 
-var port = process.env.PORT || 3000;
-var config = require('./lib/configLoader');    
-var db = require('./lib/database');
+const port = process.env.PORT || 3000;
+const config = require('./lib/configLoader');    
+const db = require('./lib/database');
 
-var routes = require('./routes/index');
-var app = express();
+const routes = require('./routes/index');
+const app = express();
 
 // view engine setup
-var hbs = exphbs.create({
+const hbs = exphbs.create({
     extname: '.hbs',
     defaultLayout: 'masterLayout',
 });
@@ -37,7 +37,7 @@ app.use('/', routes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -74,10 +74,10 @@ app.listen(port, function (err) {
 //*********************************************************
 //    Quick and dirty way to detect event loop blocking
 //*********************************************************
-var lastLoop = Date.now();
+const lastLoop = Date.now();
 
 function monitorEventLoop() {
-    var time = Date.now();
+    const time = Date.now();
     if (time - lastLoop > 1000) console.error('Event loop blocked ' + (time - lastLoop));
     lastLoop = time;
     setTimeout(monitorEventLoop, 200);
@@ -86,7 +86,5 @@ function monitorEventLoop() {
 if (process.env.NODE_ENV === 'development') {
     monitorEventLoop();
 }
-
-
 
 module.exports = app;
