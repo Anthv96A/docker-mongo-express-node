@@ -52,6 +52,9 @@ Interested in learning more about Docker? Visit https://www.pluralsight.com/cour
 
 7. Navigate to http://localhost:3000 in your browser.
 
+## FYI
+
+Docker volume create creates a volume without having to define a Dockerfile and build an image and run a container. It is used to quickly allow other containers to mount said volume
 
 
 
