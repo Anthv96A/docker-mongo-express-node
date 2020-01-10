@@ -4,6 +4,7 @@ services:
   # Service 1 This service is going to build the image from the dockerfile
   # But you can deploy this image to dockerhub and use it that way 'image: mongo-node'
   mongo-node:
+    container_name: mongo-node
     build:
       context: .
       dockerfile: dockerfile
@@ -14,10 +15,10 @@ services:
 
   # Service 2
   mongodb:
+    container_name: mongo
     image: mongo
     networks: 
       - nodeapp-network
-
 
 networks: 
   # Network 1
